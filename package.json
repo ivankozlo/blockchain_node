@@ -11,5 +11,8 @@
     "nodejs"
   ],
   "author": "Ivan Kozlov",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "crypto-js": "^4.0.0"
+  }
 }
