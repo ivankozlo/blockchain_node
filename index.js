@@ -107,9 +107,9 @@ let block3 = new Block()
 
 let transaction1 = new Transaction('Ivan', 'Ivanova', 10)
 let transaction2 = new Transaction('Ivan', 'Konstantin', 3)
-let transaction3 = new Transaction('Ivan', 'Max', 4)
+let transaction3 = new Transaction('Ivan', 'Max', 4, 'international')
 let transaction4 = new Transaction('Tetra', 'Ivan', 3)
-let transaction5 = new Transaction('Ivan', 'Tetra', 20)
+let transaction5 = new Transaction('Ivan', 'Tetra', 20, 'international')
 
 block1.addTransaction(transaction1)
 block1.addTransaction(transaction2)
