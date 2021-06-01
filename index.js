@@ -33,10 +33,11 @@ class Block {
 }
 
 class Blockchain {
-  difficulty = 2
+  difficulty
   blocks = []
 
   constructor(genesisBlock, difficulty = 2){
+    this.difficulty = difficulty
     this.addBlock(genesisBlock)
   }
 
@@ -75,7 +76,7 @@ console.log("-------------------------------------------------------------------
 // The very first block of blockchain is called "Genesis Block"
 
 let genesisBlock = new Block()
-let blockchain = new Blockchain(genesisBlock)
+let blockchain = new Blockchain(genesisBlock, 4)
 
 let block1 = new Block()
 let block2 = new Block()
