@@ -2,15 +2,37 @@
 
 const SHA256 = require("crypto-js/sha256");
 
+
+
 class Transaction {
   from
   to
   amount
-  constructor(from, to, amount) {
+  timestamp
+  transactionType
+  fees
+  constructor(from, to, amount, transactionType = "domestic") {
     this.from = from
     this.to = to
     this.amount = amount
+    this.timestamp = new Date().getTime()
+    this.transactionType = transactionType
   }
+}
+
+class TransactionTypeSmartContract {
+  static apply(transaction){
+    let fee = 0.0
+    if(transaction.transactionType == "domestic"){
+      fee = 0.02
+    }else{
+      fee = 0.05
+    }
+    transaction.fees = transaction.amount * fee
+    transaction.amount = transaction.amount - transaction.fees
+    return transaction
+  }
+  constructor(){}
 }
 
 class Block {
@@ -19,6 +41,7 @@ class Block {
   hash
   nonce
   transactions = []
+
   constructor(){
     this.nonce = 0
   }
@@ -28,7 +51,7 @@ class Block {
   }
 
   addTransaction(transaction){
-    this.transactions.push(transaction)
+    this.transactions.push(TransactionTypeSmartContract.apply(transaction))
   }
 }
 
@@ -70,7 +93,7 @@ class Blockchain {
 
 }
 
-console.log('The app started...')
+console.log('Mining in progress ...')
 console.log("--------------------------------------------------------------------")
 
 // The very first block of blockchain is called "Genesis Block"
